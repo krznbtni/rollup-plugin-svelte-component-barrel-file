@@ -1,56 +1,69 @@
 {
-  "name": "@krznbtni/rollup-plugin-svelte-component-barrel-file",
-  "version": "0.0.0-development",
-  "description": "This repo/package/whatever creates a barrel file for your Svelte components.",
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file.git"
-  },
-  "license": "ISC",
-  "author": "krznbtni",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
-      }
-    }
-  },
-  "main": "./lib/cjs/index.js",
-  "types": "./lib/cjs/types/index.d.ts",
-  "files": [
-    "lib/**/*"
-  ],
-  "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
-    "clean": "rm -rf ./lib",
-    "prepack": "npm run build",
-    "semantic-release": "semantic-release",
-    "test": "vitest",
-    "test:watch": "vitest --watch"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "devDependencies": {
-    "semantic-release": "^20.1.1",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.2"
-  }
+	"name": "@krznbtni/rollup-plugin-svelte-component-barrel-file",
+	"version": "0.0.0-development",
+	"description": "This repo/package/whatever creates a barrel file for your Svelte components.",
+	"keywords": [],
+	"bugs": {
+		"url": "https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file.git"
+	},
+	"license": "ISC",
+	"author": "krznbtni",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./lib/esm/types/index.d.ts",
+				"default": "./lib/esm/index.mjs"
+			},
+			"require": {
+				"types": "./lib/cjs/types/index.d.ts",
+				"default": "./lib/cjs/index.js"
+			}
+		}
+	},
+	"main": "./lib/cjs/index.js",
+	"types": "./lib/cjs/types/index.d.ts",
+	"files": [
+		"lib/**/*"
+	],
+	"scripts": {
+		"build": "npm run clean && npm run build:esm && npm run build:cjs",
+		"build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+		"build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+		"clean": "rm -rf ./lib",
+		"format:all": "npm run format:prettier && npm run format:eslint",
+		"format:eslint": "eslint './src/**/*.{js,ts,svelte,json}' --fix",
+		"format:prettier": "prettier --write .",
+		"lint:all": "npm run lint:prettier && npm run lint:eslint",
+		"lint:eslint": "eslint './src/**/*.{js,ts,svelte,json}'",
+		"lint:prettier": "prettier --check .",
+		"prepack": "npm run build",
+		"semantic-release": "semantic-release",
+		"test": "vitest",
+		"test:watch": "vitest --watch"
+	},
+	"release": {
+		"branches": [
+			"main"
+		]
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.54.1",
+		"@typescript-eslint/parser": "^5.54.1",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.7.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-vitest": "^0.0.54",
+		"prettier": "^2.8.4",
+		"semantic-release": "^20.1.1",
+		"typescript": "^4.9.5",
+		"vite": "^4.1.4",
+		"vitest": "^0.29.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
