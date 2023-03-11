@@ -56,6 +56,10 @@
 			"main"
 		]
 	},
+	"dependencies": {
+		"@types/node": "^18.15.0",
+		"fast-glob": "^3.2.12"
+	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.54.1",
 		"@typescript-eslint/parser": "^5.54.1",
@@ -64,15 +68,24 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-vitest": "^0.0.54",
 		"prettier": "^2.8.4",
+		"rollup": "^3.19.1",
 		"semantic-release": "^20.1.1",
 		"typescript": "^4.9.5",
 		"vite": "^4.1.4",
 		"vitest": "^0.29.2"
 	},
-	"publishConfig": {
-		"access": "public"
+	"peerDependencies": {
+		"rollup": "^3.0.0"
+	},
+	"peerDependenciesMeta": {
+		"rollup": {
+			"optional": true
+		}
 	},
 	"engines": {
 		"node": ">=14.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
