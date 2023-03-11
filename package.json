@@ -2,7 +2,13 @@
 	"name": "@krznbtni/rollup-plugin-svelte-component-barrel-file",
 	"version": "0.0.0-development",
 	"description": "This repo/package/whatever creates a barrel file for your Svelte components.",
-	"keywords": [],
+	"keywords": [
+		"barrel",
+		"components",
+		"plugin",
+		"rollup",
+		"svelte"
+	],
 	"bugs": {
 		"url": "https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/issues"
 	},
@@ -65,5 +71,8 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"engines": {
+		"node": ">=14.0.0"
 	}
 }
