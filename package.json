@@ -1,6 +1,6 @@
 {
   "name": "@krznbtni/rollup-plugin-svelte-component-barrel-file",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "This repo/package/whatever creates a barrel file for your Svelte components.",
   "keywords": [],
   "bugs": {
@@ -35,10 +35,20 @@
     "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "clean": "rm -rf ./lib",
     "prepack": "npm run build",
+    "semantic-release": "semantic-release",
     "test": "vitest",
     "test:watch": "vitest --watch"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
+    "semantic-release": "^20.1.1",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vitest": "^0.29.2"
