@@ -4,6 +4,18 @@ This repo/package/whatever creates a barrel file for your Svelte components.
 
 ## Command Cheat Sheet
 
+### Clean
+
+To delete the output from past builds:
+
+```bash
+npm run clean
+```
+
+### Prepack
+
+Used by NPM before packing, in preparation for publishing to a registry. In this package's/repository's case, it runs the `build` script.
+
 ### Publish Dry Run
 
 ```bash
