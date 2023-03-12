@@ -51,9 +51,25 @@
 		"lint:eslint": "eslint './src/**/*.{js,ts,svelte,json}'",
 		"lint:prettier": "prettier --check .",
 		"prepack": "npm run build",
+		"prepare": "husky install",
 		"semantic-release": "semantic-release",
-		"test": "vitest",
+		"test": "vitest run",
 		"test:watch": "vitest --watch"
+	},
+	"lint-staged": {
+		"*.{ts,js}": [
+			"eslint --cache --fix",
+			"prettier --write"
+		],
+		"**/(package|tsconfig(.*)?).json": [
+			"prettier --write"
+		],
+		"(pnpm-workspace|.github/**/*).{yml,yaml}": [
+			"prettier --write"
+		],
+		"((.github/**/*)|(README|CHANGELOG)|(**/(README|CHANGELOG))).md": [
+			"prettier --write"
+		]
 	},
 	"release": {
 		"branches": [
@@ -61,7 +77,7 @@
 		]
 	},
 	"dependencies": {
-		"fast-glob": "^3.2.12"
+		"fast-glob": "^3.0.0"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.54.1",
@@ -70,6 +86,8 @@
 		"eslint-config-prettier": "^8.7.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-vitest": "^0.0.54",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.0",
 		"prettier": "^2.8.4",
 		"rollup": "^3.19.1",
 		"semantic-release": "^20.1.1",
