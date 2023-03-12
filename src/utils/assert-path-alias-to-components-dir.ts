@@ -1,5 +1,5 @@
-import {PACKAGE_NAME} from './package-name.js';
 import {isNonEmptyString} from './is-non-empty-string.js';
+import {PACKAGE_NAME} from './package-name.js';
 
 export const ERROR_MESSAGE = `${PACKAGE_NAME}: invalid path to components dir. Value must be a non-empty string OR left blank.`;
 
