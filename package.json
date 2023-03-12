@@ -78,9 +78,13 @@
 		"vitest": "^0.29.2"
 	},
 	"peerDependencies": {
+		"fast-glob": "^3.0.0",
 		"rollup": "^3.0.0"
 	},
 	"peerDependenciesMeta": {
+		"fast-glob": {
+			"optional": false
+		},
 		"rollup": {
 			"optional": true
 		}
