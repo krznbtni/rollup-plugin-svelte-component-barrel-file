@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 
-import {isNonEmptyString} from './is-non-empty-string';
+import {isNonEmptyString} from './is-non-empty-string.js';
 
 describe('isNonEmptyString', () => {
 	it.each([

@@ -1,13 +1,12 @@
-import {name as PACKAGE_NAME} from '../package.json';
-
 import fs from 'node:fs/promises';
 
 import glob from 'fast-glob';
 import type {Plugin} from 'rollup';
 
-import {filePathToComponentName} from './utils/file-path-to-component-name';
-import {assertPathToComponentsDir} from './utils/assert-path-to-components-dir';
-import {assertPathAliasToComponentsDir} from './utils/assert-path-alias-to-components-dir';
+import {PACKAGE_NAME} from './utils/package-name.js';
+import {filePathToComponentName} from './utils/file-path-to-component-name.js';
+import {assertPathToComponentsDir} from './utils/assert-path-to-components-dir.js';
+import {assertPathAliasToComponentsDir} from './utils/assert-path-alias-to-components-dir.js';
 
 async function buildBarrelContent(config: RollupPluginSvelteComponentBarrelFile): Promise<string> {
 	const {pathToComponentsDir} = config;
@@ -51,7 +50,7 @@ async function watchComponentsDir(config: RollupPluginSvelteComponentBarrelFile)
 	}
 }
 
-interface RollupPluginSvelteComponentBarrelFile {
+export interface RollupPluginSvelteComponentBarrelFile {
 	/**
 	 * Use path.resolve - please
 	 */

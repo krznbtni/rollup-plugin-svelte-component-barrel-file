@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 
-import {filePathToComponentName} from './file-path-to-component-name';
+import {filePathToComponentName} from './file-path-to-component-name.js';
 
 describe('filePathToComponentName', () => {
 	it('should return the component name when given a file path', () => {

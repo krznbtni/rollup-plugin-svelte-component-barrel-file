@@ -1,6 +1,9 @@
 import {describe, it, expect} from 'vitest';
 
-import {assertPathAliasToComponentsDir, ERROR_MESSAGE} from './assert-path-alias-to-components-dir';
+import {
+	assertPathAliasToComponentsDir,
+	ERROR_MESSAGE,
+} from './assert-path-alias-to-components-dir.js';
 
 describe('assertPathAliasToComponentsDir', () => {
 	it.each(['something', ' '])('should not throw if given valid arguments', args => {

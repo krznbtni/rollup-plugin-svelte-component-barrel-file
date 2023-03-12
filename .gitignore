@@ -29,4 +29,4 @@ node_modules/
 .env.test
 
 # Output of TypeScript build
-lib
+dist
