@@ -1,14 +1,13 @@
+import {name as PACKAGE_NAME} from '../package.json';
+
 import fs from 'node:fs/promises';
 
 import glob from 'fast-glob';
 import type {Plugin} from 'rollup';
 
-function filePathToComponentName(filePath: string): string | undefined {
-	return filePath
-		.split('/')
-		.pop()
-		?.replace(/\.\w+$/, '');
-}
+import {filePathToComponentName} from './utils/file-path-to-component-name';
+import {assertPathToComponentsDir} from './utils/assert-path-to-components-dir';
+import {assertPathAliasToComponentsDir} from './utils/assert-path-alias-to-components-dir';
 
 async function buildBarrelContent(config: RollupPluginSvelteComponentBarrelFile): Promise<string> {
 	const {pathToComponentsDir} = config;
@@ -68,8 +67,14 @@ interface RollupPluginSvelteComponentBarrelFile {
 export default function rollupPluginSvelteComponentBarrelFile(
 	config: RollupPluginSvelteComponentBarrelFile,
 ): Plugin {
+	assertPathToComponentsDir(config.pathToComponentsDir);
+
+	if (config.pathAliasToComponentsDir) {
+		assertPathAliasToComponentsDir(config.pathAliasToComponentsDir);
+	}
+
 	return {
-		name: '@krznbtni/rollup-plugin-svelte-component-barrel-file',
+		name: PACKAGE_NAME,
 		async buildStart() {
 			await writeNewBarrelFile(config);
 			void watchComponentsDir(config);
