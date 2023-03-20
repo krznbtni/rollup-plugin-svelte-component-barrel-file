@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/compare/v1.1.0...v1.1.1) (2023-03-20)
+
+### Bug Fixes
+
+- **release:** attempt to re-enable github release thingie ([a24862b](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/commit/a24862b2962015a1f359d8c0438293058f7d1987))
+
 # [1.1.0](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/compare/v1.0.0...v1.1.0) (2023-03-20)
 
 ### Bug Fixes
