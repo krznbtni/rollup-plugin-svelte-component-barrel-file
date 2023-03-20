@@ -3,9 +3,10 @@ name: Release
 on:
   workflow_dispatch:
   push:
-    - main
-    - beta
-    - alpha
+    branches:
+      - main
+      - beta
+      - alpha
 
 jobs:
   # Run our internal Test workflow.
