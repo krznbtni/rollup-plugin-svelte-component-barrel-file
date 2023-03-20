@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Exit if running in CI environment
+[ -n "$CI" ] && exit 0
+
 exec < /dev/tty && npx cz --hook || true
