@@ -1,4 +1,5 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
 		"lib": ["ES2022"],
@@ -6,6 +7,6 @@
 		"module": "ESNext",
 		"moduleResolution": "NodeNext",
 		"outDir": "../dist/esm",
-		"preserveValueImports": true /* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
+		"verbatimModuleSyntax": true /* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */
 	}
 }
