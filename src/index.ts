@@ -10,7 +10,7 @@ import {PACKAGE_NAME} from './utils/package-name.js';
 
 async function buildBarrelContent(config: RollupPluginSvelteComponentBarrelFile): Promise<string> {
 	const {pathToComponentsDir} = config;
-	const filePaths = await glob(`${pathToComponentsDir}/*.svelte`);
+	const filePaths = await glob(`${pathToComponentsDir}/**/*.svelte`);
 
 	const barrelFileContent = filePaths.reduce((acc, curr) => {
 		const componentName = filePathToComponentName(curr);

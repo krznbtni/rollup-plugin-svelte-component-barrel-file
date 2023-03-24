@@ -2,17 +2,21 @@ name: Release
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - 'Tests'
+  push:
     branches:
       - main
-    types:
-      - completed
+      - beta
+      - alpha
 
 jobs:
+  # Run our internal Test workflow.
+  tests:
+    uses: ./.github/workflows/tests.yml
+
   release:
     name: Release
+    # Require that our tests pass.
+    needs: [tests]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
