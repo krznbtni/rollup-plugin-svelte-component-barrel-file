@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 
+import chokidar from 'chokidar';
 import glob from 'fast-glob';
 import type {Plugin} from 'rollup';
 
@@ -40,14 +41,24 @@ async function writeNewBarrelFile(config: RollupPluginSvelteComponentBarrelFile)
 	await fs.writeFile(pathToIndexFile, barrelFileContent);
 }
 
-async function watchComponentsDir(config: RollupPluginSvelteComponentBarrelFile): Promise<void> {
-	const watcher = fs.watch(config.pathToComponentsDir, {recursive: true});
+function watchComponentsDir(config: RollupPluginSvelteComponentBarrelFile): chokidar.FSWatcher {
+	const watcher = chokidar.watch(config.pathToComponentsDir, {
+		persistent: true,
+	});
 
-	for await (const event of watcher) {
-		if (event.eventType === 'rename' && event.filename.endsWith('.svelte')) {
-			await writeNewBarrelFile(config);
+	watcher.on('change', path => {
+		if (path.endsWith('.svelte') || path.endsWith('index.ts')) {
+			void writeNewBarrelFile(config);
 		}
-	}
+	});
+
+	watcher.on('add', path => {
+		if (path.endsWith('.svelte') || path.endsWith('index.ts')) {
+			void writeNewBarrelFile(config);
+		}
+	});
+
+	return watcher;
 }
 
 export interface RollupPluginSvelteComponentBarrelFile {
@@ -72,11 +83,18 @@ export default function rollupPluginSvelteComponentBarrelFile(
 		assertPathAliasToComponentsDir(config.pathAliasToComponentsDir);
 	}
 
+	let watcher: chokidar.FSWatcher | undefined = undefined;
+
 	return {
 		name: PACKAGE_NAME,
 		async buildStart() {
 			await writeNewBarrelFile(config);
-			void watchComponentsDir(config);
+			watcher = watchComponentsDir(config);
+		},
+		async buildEnd() {
+			if (watcher) {
+				await watcher.close();
+			}
 		},
 	};
 }
