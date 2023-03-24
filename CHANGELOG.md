@@ -1,3 +1,10 @@
+## [1.1.2-beta.1](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/compare/v1.1.1...v1.1.2-beta.1) (2023-03-24)
+
+### Bug Fixes
+
+- match files in nested levels ([347395c](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/commit/347395c0aeb2f1d7f04710ccb1735d34939b9e07))
+- use chokidar to watch files ([02acf6d](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/commit/02acf6dd11a8dd9be9cf6476df4032a71c6543f2))
+
 ## [1.1.1](https://github.com/krznbtni/rollup-plugin-svelte-component-barrel-file/compare/v1.1.0...v1.1.1) (2023-03-20)
 
 ### Bug Fixes
